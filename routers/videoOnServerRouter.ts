@@ -11,7 +11,7 @@ const forBodyFfmpeg = (shortVideo: Gluing, dirIn: string, dirOut: string, dirCut
         await shortVideo.cutVideo(dirCut, dirIn + file, `${i}`, i, shortTime);
     }
 
-    await shortVideo.merge(dirCut, dirOut + 'video-' + num, tmp);
+    await shortVideo.merge(dirCut, dirOut + 'preview-' + num, tmp);
 
     await shortVideo.deleteShortVideos(dirCut);
     res()
