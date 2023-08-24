@@ -3,6 +3,8 @@ const path = require('path');
 const color = require('colors');
 var ffmpeg = require("fluent-ffmpeg");
 
+import SortMethods from "./sort";
+
 export default class Gluing{
     constructor(){
         
@@ -28,25 +30,13 @@ export default class Gluing{
         })
     }
 
-    public sortirovka(array: string[]){
-        var mapped = array.map(function (el, i) {
-            return { name: el, value: Number(path.basename(el, path.extname(el))) };
-        });
-
-            // сортируем массив, содержащий уменьшенные значения
-        mapped.sort((a: any, b: any) => {
-            return a.value - b.value
-        });
-
-        return mapped.map((el) => el.name)
-
-    }
-
     public merge(dir: string, endVideoName: string, tmp: string){
         return new Promise((res: any) => {
             const videoNames: string[] = fs.readdirSync(dir);
 
-            const sortVideoNames: string[] = this.sortirovka(videoNames)
+            const sortMethods = new SortMethods();
+            const sortVideoNames: string[] = sortMethods.bbl(videoNames)
+
             var mergedVideo = ffmpeg();
             // videoNames.forEach(function(videoName: any){
             //     mergedVideo = mergedVideo.addInput(dir + videoName);
