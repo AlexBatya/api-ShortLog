@@ -1,0 +1,4 @@
+require('./dist/app.js')
+
+
+

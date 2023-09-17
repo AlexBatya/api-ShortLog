@@ -6,10 +6,6 @@ var ffmpeg = require("fluent-ffmpeg");
 import SortMethods from "./sort";
 
 export default class Gluing{
-    constructor(){
-        
-    }
-
     public cutVideo(dir: string, videoLink: string, toVideoLink: string, startTime: number, shortTime: number){
         return new Promise((res: any) => {
             ffmpeg({source: videoLink + '.mp4'})
@@ -38,9 +34,6 @@ export default class Gluing{
             const sortVideoNames: string[] = sortMethods.bbl(videoNames)
 
             var mergedVideo = ffmpeg();
-            // videoNames.forEach(function(videoName: any){
-            //     mergedVideo = mergedVideo.addInput(dir + videoName);
-            // });
             for(let i = 1; i < sortVideoNames.length - 1; i++){
                 console.log(dir + sortVideoNames[i]) //!
                 mergedVideo = mergedVideo.addInput(dir + sortVideoNames[i]);
