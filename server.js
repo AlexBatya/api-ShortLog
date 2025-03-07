@@ -1,4 +1,4 @@
-require('./dist/app.js')
+require('./build/app.js')
 
 
 
