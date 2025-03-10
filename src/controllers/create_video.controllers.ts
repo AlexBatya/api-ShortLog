@@ -4,7 +4,7 @@ class CreateVideoController {
   public async createAllVideos(req: any, res: any) {
     try {
       // Проверка авторизации
-      if (req.headers.authorization !== 'ваш_ключ_авторизации') {
+      if (req.headers.authorization !== '') {
         return res.status(403).send('Неверный ключ авторизации');
       }
 
